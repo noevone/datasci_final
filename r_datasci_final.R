@@ -18,7 +18,7 @@ all_yes <- df %>%
 all_no <- df %>%
   filter(PCOS == 0)
 
-pie <- ggplot(df, aes(x = "", y=Stressed,fill = factor(PCOS))) + 
+pie <- ggplot(df, aes(x = "", y=Stressed,fill = factor(PCOS, labels = c('False', 'True')))) + 
   geom_bar(width = 1, stat = "identity") +
   theme(axis.line = element_blank(), 
         plot.title = element_text(hjust=0.5)) + 
@@ -27,8 +27,7 @@ pie <- ggplot(df, aes(x = "", y=Stressed,fill = factor(PCOS))) +
        y=NULL, 
        title="Stress (PCOS)", 
        caption="Source: Kaggle") +
-  scale_fill_manual(
-    values = c(0 = 'palevioletred', 1 = 'lightskyblue')) +
+  scale_fill_manual(values = c('palevioletred', 'lightskyblue')) +
   theme(
     plot.background = element_rect('thistle'),
     panel.background = element_rect('honeydew')
@@ -36,6 +35,7 @@ pie <- ggplot(df, aes(x = "", y=Stressed,fill = factor(PCOS))) +
 
 
 pie + coord_polar(theta = "y", start=0)
+
 
 
 
